@@ -8,8 +8,7 @@ const MyFormComponent=({formId}:{formId:string})=>{
 
 const [cmsForm, setCmsForm] = useState<any>(null)
 const [error, setError] = useState<string | null>(null)
-// const {cmsForm,setCmsForm}=useState<any>(null)
-// const {error,setError}=useState<string |null>(null)
+
 
 useEffect(()=>{
 fetch(`/api/forms/${formId}`)
@@ -21,14 +20,6 @@ console.log('Form data:', data)
 .catch((err)=>setError('Error loading form'))
 },[formId])
 
-// const handleSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
-// e.preventDefault()
-// const formData = new FormData(e.currentTarget)
-// const dataTosend=Array.from(formData.entries()).map(([name,value])
-
-// })
-
-
 const handleSubmit= async(e:React.FocusEvent<HTMLFormElement>)=>{
 e.preventDefault()
 const formData=new FormData(e.currentTarget)
@@ -37,7 +28,7 @@ field:name,
 value:value.toString()
 }))
 
-// console.log('to send data',dataTosend)
+
 
 const response=await fetch('/api/form-submissions',{
 
