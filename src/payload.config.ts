@@ -10,6 +10,9 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
+
+import {multiTenantPlugin} from '@payloadcms/plugin-multi-tenant';
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -34,6 +37,15 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    // storage-adapter-placeholder
+    formBuilderPlugin({}),
+
+
+// <-------------------------this code is giving me error-------------->
+    // multiTenantPlugin({
+    //   collections: ['forms', 'formSubmissions'],
+    //   tenantField: 'tenant'
+    // }),
+
+    
   ],
 })
